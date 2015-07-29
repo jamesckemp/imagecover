@@ -135,7 +135,26 @@
         var coverImageCss3 = function() {
             $container.each(function() {
                 var $single = $(this),
-                    $img    = $single.find('>img').first();
+                    $img    = $single.find('>img').first(),
+                    img_src = false;
+                    
+                if( typeof $img.attr('src') == 'undefined' ) {
+                    
+                    srcset = $img.attr('srcset');
+                    
+                    if( typeof srcset != 'undefined' ) {
+                        
+                        srcset = srcset.split(", ");
+                        
+                        img_src = srcset[0];
+                        
+                    }
+                    
+                } else {
+                    
+                    img_src = $img.attr('src');
+                    
+                }
         
                 var $preloadItem = (settings.preloadAllImages) ? $single : $img;
 
@@ -149,7 +168,7 @@
                     'background-repeat':'no-repeat',
                     'background-position':'center',
                     'background-size':'cover',
-                    'background-image':'url(' + $img.attr('src') + ')'
+                    'background-image':'url(' + img_src + ')'
                 });
 
                 $img.remove();
