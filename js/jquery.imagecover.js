@@ -158,7 +158,6 @@
                                 img_src = srcset[0];
                                 
                             }
-                            img_src = srcset[1].replace(' 2x','').replace(' 2X','');
                         
                         } else {
                             
