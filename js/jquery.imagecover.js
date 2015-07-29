@@ -146,7 +146,25 @@
                         
                         srcset = srcset.split(", ");
                         
-                        img_src = srcset[0];
+                        if( window.devicePixelRatio > 1 ) {
+                            
+                            if( typeof srcset[1] != "undefined" ) {
+                                
+                                img_src = srcset[1].split(" ");
+                                img_src = img_src[0];
+                                
+                            } else {
+                                
+                                img_src = srcset[0];
+                                
+                            }
+                            img_src = srcset[1].replace(' 2x','').replace(' 2X','');
+                        
+                        } else {
+                            
+                            img_src = srcset[0];
+                            
+                        }
                         
                     }
                     
